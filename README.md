@@ -1,1 +1,0 @@
-# NIM Workshop Materials
