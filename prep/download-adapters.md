@@ -3,6 +3,7 @@ https://docs.nvidia.com/nim/large-language-models/latest/peft.html
 
 export LOCAL_PEFT_DIRECTORY=~/loras
 mkdir $LOCAL_PEFT_DIRECTORY
+cd $LOCAL_PEFT_DIRECTORY
 
 # downloading NeMo-format loras
 ngc registry model download-version "nim/meta/llama3-8b-instruct-lora:nemo-math-v1"
