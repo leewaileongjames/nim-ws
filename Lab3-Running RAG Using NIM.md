@@ -1,82 +1,24 @@
-# 3. Running RAG Using NIM
+# 3. Running RAG AI Blueprint
 
-# 3.1 Setup
+mkdir -p ~/.cache/nim
+export MODEL_DIRECTORY=~/.cache/nim
+sudo chmod -R 777 "$MODEL_DIRECTORY"
 
->This guide will cover on-prem deployment using NVIDIA NIM to run a simple RAG:
+source deploy/compose/.env
+source deploy/compose/perf_profile.env
 
-> NVIDIA Technology
->- LLM NIM (Llama3-8b-Instruct)
->- Embedding NIM (nv-embedqa-e5-v5)
->- Reranking NIM (nv-rerankqa-mistral-4b-v3)
+## Start RAG services
+export NGC_API_KEY=<key-here>
+USERID=$(id -u) docker compose -f deploy/compose/nims.yaml up -d
+docker compose -f deploy/compose/vectordb.yaml up -d
+docker compose -f deploy/compose/docker-compose-ingestor-server.yaml up -d
+USERID=$(id -u) docker compose -f deploy/compose/docker-compose-rag-server.yaml up -d --build
 
-> 3rd Party Software
->- LangChain
->- Milvus database
+docker compose -f deploy/compose/docker-compose-rag-server.yaml up -d
 
-
-1. Check if any running container from preivious lab and stop it if possible.
-    ```bash
-    docker ps
-    ```
-
-    ```bash
-    docker stop <container_id>
-    ```
-
-<br>
-
-2. Go to RAG deployment folder
-    
-    ```bash
-    cd GenerativeAIExamples/RAG/examples/basic_rag/langchain/
-    ```
-
-<br>
-
-3. Run the following command to spin up all the RAG containers
-     
-    ```bash
-    USERID=$(id -u) docker compose --env-file .env --profile local-nim --profile milvus up -d
-    ```
-    Sample Output: <br>
-    ![image](https://git.apps.lab-ocp.cnasg.dellcsc.com/workshop/NIMs/raw/branch/main/images/lab3-rag-running-containers.png)
-
-<br>
-
-4. Alternatively, you may run the following command to check the status of the RAG containers
-
-    ```bash
-    docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}"
-    ```
-    Sample Output: <br>
-    ![image](https://git.apps.lab-ocp.cnasg.dellcsc.com/workshop/NIMs/raw/branch/main/images/lab3-rag-container-status.png)
-<br>
-
-5. Open a new web browser window, and nagivate to the RAG playground application running on locally by port 8090
-
-    ```bash
-    http://localhost:8090
-    ```
-    Sample Output: <br>
-    ![image](https://git.apps.lab-ocp.cnasg.dellcsc.com/workshop/NIMs/raw/branch/main/images/lab3-rag-playground.png)
-<br>
-
-6. To add a new knowledge article, click on the "Knowledge Base" on the top right, followed by "Add File" button to upload the file in TXT or PDF
-
-    Sample Output: <br>
-    ![image](https://git.apps.lab-ocp.cnasg.dellcsc.com/workshop/NIMs/raw/branch/main/images/lab3-rag-knowledge-base-management.png)
-<br>
-
-7. click on the "Converse" on the top right to go back to the RAG conversation window, and tick the "Use knowledge base" checkbox if you expect the response from RAG with relevant information retrieved from the knowledge base
-
-    Sample Output: <br>
-    ![image](https://git.apps.lab-ocp.cnasg.dellcsc.com/workshop/NIMs/raw/branch/main/images/lab3-rag-converse.png)
-<br>
-
----
-
-# 3.2 Cleanup
-
-```bash
-docker compose --profile local-nim --profile milvus down
-```
+## Stop RAG services
+docker compose -f deploy/compose/docker-compose-ingestor-server.yaml down
+docker compose -f deploy/compose/nims.yaml down
+docker compose -f deploy/compose/nims.yaml --profile vlm down
+docker compose -f deploy/compose/docker-compose-rag-server.yaml down
+docker compose -f deploy/compose/vectordb.yaml down
