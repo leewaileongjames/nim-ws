@@ -4,7 +4,7 @@ echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
 
 
 export IMG_NAME=nvcr.io/nim/meta/llama3-8b-instruct:latest
-export LOCAL_NIM_CACHE=/opt/nim/.cache
+export LOCAL_NIM_CACHE=~/.cache/nim
 sudo mkdir -p "$LOCAL_NIM_CACHE"
 sudo chmod -R 777 "$LOCAL_NIM_CACHE"
 
