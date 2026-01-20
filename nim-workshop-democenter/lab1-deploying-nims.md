@@ -2,11 +2,11 @@
 
 This guide will walk you through setting up a Llama 3.8B Instruct model on NIM and running a GenAI-Perf benchmark using Triton Server.
 
-## 1. Setup and Pre-download Model Cache
+## 1. Running the NIM Model
 
 ### Step 1: Set Up Local Nim Cache
 
-First, set up a local cache directory for Nim.
+First, set up a local cache directory for NIM.
 
 ```bash
 export LOCAL_NIM_CACHE=~/.cache/nim
@@ -23,23 +23,7 @@ docker run --rm --runtime=nvidia --gpus=all \
     nvcr.io/nim/meta/llama3-8b-instruct:latest \
     list-model-profiles
 ```
-
-### Step 3: Pre-download the Model Cache
-
-Download the model profile cache to your local system.
-
-```bash
-docker run -it --rm --gpus all \
-    -e NGC_API_KEY \
-    -v $LOCAL_NIM_CACHE:/opt/nim/.cache \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest \
-    download-to-cache \
-    -p 8d3824f766182a754159e88ad5a0bd465b1b4cf69ecf80bd6d6833753e945740
-```
-
-## 2. Running the NIM Model
-
-### Step 4: Start the Model Server
+### Step 3: Start the Model Server
 
 Run the Llama 3.8B Instruct model on NIM in detached mode.
 
@@ -54,7 +38,7 @@ docker run -itd --name=llama3-8b-instruct --rm \
     nvcr.io/nim/meta/llama3-8b-instruct:latest
 ```
 
-### Step 5: Test the Model Endpoint
+### Step 4: Test the Model Endpoint
 
 To verify that the model server is running, send a `GET` request to list the available models.
 
@@ -62,7 +46,7 @@ To verify that the model server is running, send a `GET` request to list the ava
 curl -s -X GET 'http://0.0.0.0:8000/v1/models' | jq
 ```
 
-### Step 6: Test Model Response
+### Step 5: Test Model Response
 
 You can now test the model by sending a `POST` request with a sample input.
 
@@ -78,9 +62,9 @@ curl -s -X 'POST' \
 }' | jq
 ```
 
-## 3. Running GenAI-Perf Benchmark
+## 2. Running GenAI-Perf Benchmark
 
-### Step 7: Copy the Tokenizer for Llama 3.1 8B Instruct
+### Step 6: Copy the Tokenizer for Llama 3.1 8B Instruct
 
 Copy the tokenizer for the Llama 3.1 8B Instruct model.
 
@@ -90,7 +74,7 @@ mkdir -p $HF_TOKENIZER
 cp -ar ~/.cache/huggingface/hub $HF_TOKENIZER
 ```
 
-### Step 8: Export Variables and Run Triton Server
+### Step 7: Export Variables and Run Triton Server
 
 Set the environment variables and run the Triton Server.
 
@@ -104,7 +88,7 @@ docker run -it --rm --net=host --gpus=all \
     nvcr.io/nvidia/tritonserver:${RELEASE}-py3-sdk
 ```
 
-### Step 9: Run GenAI-Perf Benchmark
+### Step 8: Run GenAI-Perf Benchmark
 
 Run the GenAI-Perf benchmark script on the Triton Server. Allow approximately 30 seconds for the script to complete.
 

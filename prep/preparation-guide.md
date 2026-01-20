@@ -1,4 +1,5 @@
-### 1. Pull images
+
+### 1. Pull images and install common libraries
 1. Login to Docker NGC
 
 ```
@@ -12,6 +13,12 @@ export IMG_NAME=nvcr.io/nim/meta/llama3-8b-instruct:1.0.3
 export TRITON_IMG_NAME=nvcr.io/nvidia/tritonserver:24.06-py3-sdk
 docker image pull $IMG_NAME
 docker image pull $TRITON_IMG_NAME
+```
+
+3. Install common libraries
+```
+sudo apt install jq -y
+sudo apt install zip unzip -y
 ```
 
 ### 2. Download model caches

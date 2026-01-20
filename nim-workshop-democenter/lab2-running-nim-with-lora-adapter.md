@@ -75,29 +75,10 @@ export CONTAINER_NAME=llama3-8b-instruct   # Name of the NIM container
 
 ## Step 4: Run NIM with LoRA Support
 
-You can launch the NIM container with either a **fixed model repository** or the **latest NGC version**.
-
-### Option A — Run Specific Version (1.0.3)
+Now we can start running an instance of NIM with LoRA support profile:
 
 ```bash
-docker run -it --rm -d --name=$CONTAINER_NAME \
-    --gpus all \
-    --network=host \
-    --shm-size=16GB \
-    -e NIM_MODEL_NAME=/model-repo \
-    -v $MODEL_REPO:/model-repo \
-    -e NIM_PEFT_SOURCE \
-    -e NIM_PEFT_REFRESH_INTERVAL \
-    -v $LOCAL_PEFT_DIRECTORY:/tmp/loras \
-    -u $(id -u):$(id -g) \
-    -p 8000:8000 \
-    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3
-```
-
-### Option B — Run Latest Version (Recommended)
-
-```bash
-docker run -it --rm --name=$CONTAINER_NAME \
+docker run -itd --rm --name=$CONTAINER_NAME \
     --runtime=nvidia \
     --gpus all \
     --shm-size=16GB \
@@ -108,7 +89,7 @@ docker run -it --rm --name=$CONTAINER_NAME \
     -v $LOCAL_PEFT_DIRECTORY:$NIM_PEFT_SOURCE \
     -u $(id -u):$(id -g) \
     -p 8000:8000 \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3
 ```
 
 **Explanation:**
