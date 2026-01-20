@@ -2,7 +2,7 @@ https://docs.nvidia.com/nim/large-language-models/latest/peft.html
 
 
 export LOCAL_PEFT_DIRECTORY=~/nim/loras
-mkdir $LOCAL_PEFT_DIRECTORY
+mkdir -p $LOCAL_PEFT_DIRECTORY
 cd $LOCAL_PEFT_DIRECTORY
 
 # downloading NeMo-format loras
