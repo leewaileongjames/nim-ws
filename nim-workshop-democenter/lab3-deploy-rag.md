@@ -1,4 +1,4 @@
-export NGC_API_KEY="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"
+export NGC_API_KEY=""
 echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
 
 source deploy/compose/.env
