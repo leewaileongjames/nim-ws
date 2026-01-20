@@ -1,5 +1,8 @@
-# ==== Set User for local NIM deployment ====
+# ==========================
+# User / Auth
+# ==========================
 export USERID=$(id -u)
+export NVIDIA_API_KEY=${NGC_API_KEY}
 
 # ==== Endpoints for using on-prem NIMs ====
 export APP_EMBEDDINGS_SERVERURL=nemoretriever-embedding-ms:8000
