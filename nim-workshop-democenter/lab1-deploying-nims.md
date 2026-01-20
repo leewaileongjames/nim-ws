@@ -1,6 +1,18 @@
-# NIM Model Setup and GenAI-Perf Benchmark
-
+# 🧪 Lab Guide 01: Running NVIDIA NIM and GenAI-Perf Benchmark
 This guide will walk you through setting up a Llama 3.8B Instruct model on NIM and running a GenAI-Perf benchmark using Triton Server.
+You’ll learn how to configure the environment, launch the container, inference with the NVIDIA NIM container.
+
+---
+
+## 🧩 Prerequisites
+
+Before starting, ensure you have the following:
+
+* **Docker** (with NVIDIA Container Toolkit installed)
+* **NGC API key** (for accessing NVIDIA’s NGC registry)
+* **GPU-enabled system**
+
+---
 
 ## 1. Running the NIM Model
 

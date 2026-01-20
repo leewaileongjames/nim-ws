@@ -1,8 +1,4 @@
-Here’s a **clean, professional, and detailed lab guide** version of your commands, formatted for technical documentation or training materials.
-
----
-
-# 🧪 Lab Guide: Running NVIDIA NIM with LoRA (Low-Rank Adaptation)
+# 🧪 Lab Guide 02: Running NVIDIA NIM with LoRA (Low-Rank Adaptation)
 
 This lab guide walks you through setting up and running an NVIDIA NIM (NVIDIA Inference Microservice) container with **LoRA adapters** for fine-tuned model customization.
 You’ll learn how to configure the environment, launch the container, and query LoRA-enabled models.
@@ -16,7 +12,7 @@ Before starting, ensure you have the following:
 * **Docker** (with NVIDIA Container Toolkit installed)
 * **NGC API key** (for accessing NVIDIA’s NGC registry)
 * **GPU-enabled system**
-* **LoRA adapter files** (optional for this lab; you can use the default cache setup)
+* **LoRA adapter files**
 
 ---
 
