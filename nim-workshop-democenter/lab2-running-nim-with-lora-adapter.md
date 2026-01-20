@@ -128,7 +128,7 @@ Once launched, the container will begin serving the NIM API.
 Check which LoRA adapters are available and ready for inference.
 
 ```bash
-curl -X GET 'http://0.0.0.0:8000/v1/models'
+curl -X GET 'http://0.0.0.0:8000/v1/models' | jq
 ```
 
 This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.
@@ -149,7 +149,7 @@ curl -X 'POST' \
     "model": "llama3-8b-instruct-lora_vhf-math-v1",
     "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
     "max_tokens": 128
-  }'
+  }' | jq
 ```
 ---
 

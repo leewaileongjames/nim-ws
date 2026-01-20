@@ -7,7 +7,7 @@ docker stop $(docker ps -q)
 ```bash
 export LOCAL_PEFT_DIRECTORY=~/nim/loras
 mkdir -p $LOCAL_PEFT_DIRECTORY
-ls $LOCAL__PEFT_DIRECTORY
+ls $LOCAL_PEFT_DIRECTORY
 ```
 
 
