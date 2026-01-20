@@ -1,0 +1,12 @@
+nvcr.io/nim/nvidia/nvidia-nemotron-nano-9b-v2:1.12.2
+nvcr.io/nim/nvidia/llama-3.2-nv-embedqa-1b-v2:1.10.1
+nvcr.io/nvidia/nemo-microservices/llama-3.2-nemoretriever-1b-vlm-embed-v1:1.7.0
+nvcr.io/nim/nvidia/llama-3.2-nv-rerankqa-1b-v2:1.8.0
+nvcr.io/nim/nvidia/nemoretriever-page-elements-v2:1.5.0
+nvcr.io/nim/nvidia/nemoretriever-graphic-elements-v1:1.5.0
+nvcr.io/nim/nvidia/nemoretriever-table-structure-v1:1.5.0
+nvcr.io/nim/baidu/paddleocr:1.5.0
+nvcr.io/nvidia/nemo-microservices/nemoretriever-ocr-v1:1.1.0
+nvcr.io/nim/nvidia/nemoretriever-parse:1.2
+nvcr.io/nim/nvidia/riva-asr:1.3.0
+nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-vl-8b-v1:1.3.1
