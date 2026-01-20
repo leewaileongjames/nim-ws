@@ -1,0 +1,1 @@
+{"target_modules": ["q_proj", "k_proj", "v_proj"], "adapter_dim": 32, "alpha": 32, "adapter_dropout": 0.0, "column_init_method": "xavier", "row_init_method": "zero", "layer_selection": null, "weight_tying": false, "position_embedding_strategy": null, "variant": "huggingface", "r": 32, "lora_alpha": 32}

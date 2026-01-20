@@ -1,0 +1,2 @@
+The use of this model is governed by the AI Foundation Models Community License (https://docs.nvidia.com/ai-foundation-models-community-license.pdf). ADDITIONAL INFORMATION: Meta Llama 3 Community License (https://llama.meta.com/llama3/license), Built with Meta Llama 3.
+

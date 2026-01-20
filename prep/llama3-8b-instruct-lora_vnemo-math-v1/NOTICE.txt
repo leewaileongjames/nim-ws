@@ -1,0 +1,7 @@
+Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+LicenseRef-NvidiaProprietary
+
+NVIDIA CORPORATION, its affiliates and licensors retain all intellectual property and proprietary rights in and to this material, related documentation and any modifications thereto. Any use, reproduction, disclosure or distribution of this material and related documentation without an express license agreement from NVIDIA CORPORATION or its affiliates are strictly prohibited.
+
+Meta Llama 3 is licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc. All Rights Reserved.
+
