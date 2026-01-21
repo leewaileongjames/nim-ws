@@ -1,6 +1,6 @@
-export NIM_MODEL_PROFILE=5cf34bab34141258d0cc836c66684642d3e3f32b4daaa2008e48bd289d6bc84b
+export NIM_MODEL_PROFILE=5811750e70b7e9f340f4d670c72fcbd5282e254aeb31f62fd4f937cfb9361007
 
-nvcr.io/nim/nvidia/nvidia-nemotron-nano-9b-v2:1.12.2
+nvcr.io/nim/nvidia/llama-3.1-nemotron-nano-8b-v1:1.8.4
 nvcr.io/nim/nvidia/llama-3.2-nv-embedqa-1b-v2:1.10.1
 nvcr.io/nvidia/nemo-microservices/llama-3.2-nemoretriever-1b-vlm-embed-v1:1.7.0
 nvcr.io/nim/nvidia/llama-3.2-nv-rerankqa-1b-v2:1.8.0
@@ -17,3 +17,5 @@ milvusdb/milvus:v2.6.2-gpu # milvusdb/milvus:v2.6.2 for CPU
 quay.io/coreos/etcd:v3.6.5
 minio/minio:RELEASE.2025-09-07T16-13-09Z
 docker.elastic.co/elasticsearch/elasticsearch:9.0.3
+
+nvcr.io/mgsgvj1csvvp/nv-ingest-uv:25.6.2

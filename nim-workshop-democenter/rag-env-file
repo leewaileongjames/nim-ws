@@ -18,8 +18,10 @@ export YOLOX_TABLE_STRUCTURE_GRPC_ENDPOINT=table-structure:8001
 export YOLOX_TABLE_STRUCTURE_INFER_PROTOCOL=grpc
 export APP_LLM_SERVERURL=nim-llm:8000
 export SUMMARY_LLM_SERVERURL=nim-llm:8000
-export APP_LLM_MODELNAME='nvidia/nvidia-nemotron-nano-9b-v2'
-export SUMMARY_LLM_MODELNAME='nvidia/nvidia-nemotron-nano-9b-v2'
+export APP_LLM_MODELNAME='nvidia/nvidia-nemotron-nano-9b-v2:1.12.2'
+export SUMMARY_LLM_MODELNAME='nvidia/nvidia-nemotron-nano-9b-v2:1.12.2'
+export SUMMARY_LLM='nvidia/nvidia-nemotron-nano-9b-v2'
+
 
 # Set GPU IDs for local deployment
 
