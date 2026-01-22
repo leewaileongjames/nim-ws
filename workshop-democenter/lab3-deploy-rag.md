@@ -18,7 +18,6 @@ In this walkthrough you deploy the NVIDIA RAG Blueprint with Docker Compose for 
 4. To pull images required by the blueprint from NGC, you must first authenticate Docker with nvcr.io. Use the NGC API Key you created in the first step.
 
    ```bash
-   export NGC_API_KEY="nvapi-..."
    echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
    ```
 
