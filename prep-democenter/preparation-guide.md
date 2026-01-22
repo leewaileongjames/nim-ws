@@ -1,4 +1,16 @@
 
+### Pre-setup
+1. Clean current lab environment
+```
+docker system prune -a
+```
+```
+docker volume prune -a
+```
+```
+sudo rm -rf app_char_rag.py nvidia-workbench/* Downloads/*
+```
+
 ### 1. Pull images and install common libraries
 1. Login to Docker NGC
 
@@ -61,6 +73,7 @@ pip install -U "huggingface_hub"
 ```
 3. HF Login
 ```
+export HF_TOKEN=<HF_API_KEY_HERE>
 hf auth login
 ```
 4. Download tokenizer into `~/tokenizer/hub/`
