@@ -96,4 +96,29 @@ cp -R ./prep-democenter/llama3-8b-instruct-lora_vhf-math-v1 \
 # Set permissions for LoRA adapters
 chmod -R 777 $LOCAL_PEFT_DIRECTORY
 
+# Step 10: Make environment variables persistent
+echo "Saving environment variables to ~/.bashrc..."
+
+# Add NGC_API_KEY to ~/.bashrc if not already present
+if ! grep -q "export NGC_API_KEY=" ~/.bashrc; then
+    echo "export NGC_API_KEY=\"$NGC_API_KEY\"" >> ~/.bashrc
+    echo "Persisted NGC_API_KEY into ~/.bashrc"
+else
+    echo "NGC_API_KEY already exists in ~/.bashrc, skipping..."
+fi
+
+# Add HF_TOKEN to ~/.bashrc if not already present
+if ! grep -q "export HF_TOKEN=" ~/.bashrc; then
+    echo "export HF_TOKEN=\"$HF_TOKEN\"" >> ~/.bashrc
+    echo "Persisted HF_TOKEN into ~/.bashrc"
+else
+    echo "HF_TOKEN already exists in ~/.bashrc, skipping..."
+fi
+
+# Reload bashrc so variables apply immediately
+echo "Reloading ~/.bashrc..."
+source ~/.bashrc
+
+echo "Environment variables saved persistently!"
+
 echo "Setup completed successfully!"
