@@ -1,3 +1,19 @@
+## One-Click setup for Democenter Lab
+Make sure you export the necessary environment variables before running the script:
+```
+export NGC_API_KEY=<your_ngc_api_key>
+export HF_TOKEN=<your_huggingface_api_token>
+```
+
+Run the script:
+```
+bash setup_script.sh
+```
+
+This will execute all the steps in sequence, ensuring the setup process is fully automated with a one-click execution.
+
+
+## Manual Setup
 
 ### Pre-setup
 1. Clean current lab environment
@@ -93,7 +109,7 @@ mkdir -p $LOCAL_PEFT_DIRECTORY
 ```
 2. Copy over Adapters from NGC 
 ```
-cd ./prep
+cd ./prep-democenter
 cp -R llama3-8b-instruct-lora_vhf-math-v1 llama3-8b-instruct-lora_vhf-squad-v1 llama3-8b-instruct-lora_vnemo-math-v1 llama3-8b-instruct-lora_vnemo-squad-v1 $LOCAL_PEFT_DIRECTORY
 chmod -R 777 $LOCAL_PEFT_DIRECTORY
 ```
