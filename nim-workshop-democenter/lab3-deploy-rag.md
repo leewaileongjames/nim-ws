@@ -1,12 +1,6 @@
 # Lab 03 - Get Started With the NVIDIA Blueprints - Enterprise RAG Blueprint
 
-Use the following documentation to get started quickly with the [NVIDIA RAG Blueprint](readme.md).
 In this walkthrough you deploy the NVIDIA RAG Blueprint with Docker Compose for a single node deployment, and using self-hosted on-premises models.
-For other deployment options, refer to [Deployment Options](readme.md#deployment-options-for-rag-blueprint).
-
-:::{tip}
-If you want to run the RAG Blueprint with [NVIDIA AI Workbench](https://docs.nvidia.com/ai-workbench/user-guide/latest/overview/introduction.html), use [Quickstart for NVIDIA AI Workbench](https://github.com/NVIDIA-AI-Blueprints/rag/blob/main/deploy/workbench/README.md).
-:::
 
 
 ## Prerequisites
@@ -37,7 +31,13 @@ If you want to run the RAG Blueprint with [NVIDIA AI Workbench](https://docs.nvi
 
 Use the following procedure to start all containers needed for this blueprint.
 
-1. Create a directory to cache the models and export the path to the cache as an environment variable.
+1. Clone git repository and cd into it:
+
+   ```bash
+   git clone https://github.com/yxchia98/rag.git rag-blueprint && cd rag-blueprint
+   ``` 
+
+2. Create a directory to cache the models and export the path to the cache as an environment variable.
 
    ```bash
    mkdir -p ~/.cache/model-cache
@@ -45,20 +45,20 @@ Use the following procedure to start all containers needed for this blueprint.
    ```
 
 
-2. Export all the required environment variables to use on-prem models.
+3. Export all the required environment variables to use on-prem models.
 
    ```bash
    source deploy/compose/.env
    ```
 
-3. Set the `NIM_MODEL_PROFILE` to be used for the LLM NIM model:
+4. Set the `NIM_MODEL_PROFILE` to be used for the LLM NIM model:
 
    ```bash
    export NIM_MODEL_PROFILE=5811750e70b7e9f340f4d670c72fcbd5282e254aeb31f62fd4f937cfb9361007
    ```
 
 
-4. Start all required NIMs by running the following code.
+5. Start all required NIMs by running the following code.
 
    :::{warning}
    Do not attempt this step unless you have completed the previous steps.
@@ -75,7 +75,7 @@ Use the following procedure to start all containers needed for this blueprint.
    :::
 
 
-5. Check the status of the deployment by running the following code. Wait until all services are up and the `nemoretriever-ranking-ms`, `nemoretriever-embedding-ms` and `nim-llm-ms`  NIMs are in healthy state before proceeding further.
+6. Check the status of the deployment by running the following code. Wait until all services are up and the `nemoretriever-ranking-ms`, `nemoretriever-embedding-ms` and `nim-llm-ms`  NIMs are in healthy state before proceeding further.
 
      ```bash
      watch -n 2 'docker ps --format "table {{.Names}}\t{{.Status}}"'
@@ -95,14 +95,14 @@ Use the following procedure to start all containers needed for this blueprint.
      ```
 
 
-6. Start the vector db containers from the repo root.
+7. Start the vector db containers from the repo root.
 
    ```bash
    docker compose -f deploy/compose/vectordb.yaml up -d
    ```
 
 
-7. Start the ingestion containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
+8. Start the ingestion containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
 
    ```bash
    docker compose -f deploy/compose/docker-compose-ingestor-server.yaml up -d
@@ -155,7 +155,7 @@ Use the following procedure to start all containers needed for this blueprint.
     ```
 
 
-8. Start the RAG containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
+9. Start the RAG containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
 
     ```bash
     docker compose -f deploy/compose/docker-compose-rag-server.yaml up -d
@@ -199,7 +199,7 @@ Use the following procedure to start all containers needed for this blueprint.
     ```
 
 
-9. Check the status of the deployment by running the following code.
+10. Check the status of the deployment by running the following code.
 
     ```bash
     docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}"
