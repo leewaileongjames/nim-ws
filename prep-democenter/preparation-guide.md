@@ -1,13 +1,13 @@
 ## One-Click setup for Democenter Lab
 Make sure you export the necessary environment variables before running the script:
 ```
-sudo export NGC_API_KEY=<your_ngc_api_key>
-sudo export HF_TOKEN=<your_huggingface_api_token>
+export NGC_API_KEY=<your_ngc_api_key>
+export HF_TOKEN=<your_huggingface_api_token>
 ```
 
 Run the script:
 ```
-sudo bash setup_script.sh
+sudo -E setup_script.sh
 ```
 
 This will execute all the steps in sequence, ensuring the setup process is fully automated with a one-click execution.
