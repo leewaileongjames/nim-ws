@@ -412,11 +412,6 @@ code {
 </div></code></pre>
 </li>
 <li>
-<p>Set the <code>NIM_MODEL_PROFILE</code> to be used for the LLM NIM model:</p>
-<pre class="hljs"><code><div><span class="hljs-built_in">export</span> NIM_MODEL_PROFILE=5811750e70b7e9f340f4d670c72fcbd5282e254aeb31f62fd4f937cfb9361007
-</div></code></pre>
-</li>
-<li>
 <p>Start all required NIMs by running the following code.</p>
 <div class="{warning}">
 <p>Do not attempt this step unless you have completed the previous steps.</p>
@@ -429,7 +424,7 @@ code {
 </div>
 </li>
 <li>
-<p>Check the status of the deployment by running the following code. Wait until all services are up and the <code>nemoretriever-ranking-ms</code>, <code>nemoretriever-embedding-ms</code> and <code>nim-llm-ms</code>  NIMs are in healthy state before proceeding further.</p>
+<p>Check the status of the deployment by running the following code. Wait until all services are up and the <code>nemoretriever-ranking-ms</code> and <code>nemoretriever-embedding-ms</code> NIMs are in healthy state before proceeding further.</p>
 <pre class="hljs"><code><div>watch -n 2 <span class="hljs-string">'docker ps --format "table {{.Names}}\t{{.Status}}"'</span>
 </div></code></pre>
 <p>Your output should look similar to the following.</p>
@@ -441,7 +436,6 @@ code {
    compose-graphic-elements-1              Up 14 minutes
    compose-table-structure-1               Up 14 minutes
    nemoretriever-embedding-ms              Up 14 minutes (healthy)
-   nim-llm-ms                              Up 14 minutes (healthy)
 </div></code></pre>
 </li>
 <li>
@@ -550,14 +544,13 @@ compose-paddle-1                        Up 38 minutes
 compose-graphic-elements-1              Up 38 minutes
 compose-table-structure-1               Up 38 minutes
 nemoretriever-embedding-ms              Up 38 minutes (healthy)
-nim-llm-ms                              Up 38 minutes (healthy)
 </div></code></pre>
 </li>
 </ol>
 <h2 id="experiment-with-the-web-user-interface">Experiment with the Web User Interface</h2>
 <p>After the RAG Blueprint is deployed, you can use the RAG UI to start experimenting with it.</p>
 <ol>
-<li>Open a web browser and access the RAG UI. You can start experimenting by uploading docs and asking questions. For details, see <a href="user-interface.md">User Interface for NVIDIA RAG Blueprint</a>.</li>
+<li>Open a web browser and access the RAG UI at http://. You can start experimenting by uploading docs and asking questions.</li>
 </ol>
 <h2 id="shut-down-services">Shut down services</h2>
 <ol>
