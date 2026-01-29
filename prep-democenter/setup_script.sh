@@ -16,7 +16,7 @@ fi
 echo "Cleaning current lab environment..."
 docker system prune -a -f
 docker volume prune -a -f
-sudo rm -rf app_char_rag.py nvidia-workbench/* Downloads/*
+sudo rm -rf ~/app_char_rag.py ~/nvidia-workbench/* ~/Downloads/*
 
 # Step 2: Login to Docker NGC
 echo "Logging into Docker NGC..."
@@ -87,10 +87,10 @@ mkdir -p $LOCAL_PEFT_DIRECTORY
 
 # Assuming you've downloaded the adapters already into the "prep" directory
 echo "Copying LoRA adapters..."
-cp -R ./prep-democenter/llama3-8b-instruct-lora_vhf-math-v1 \
-    ./prep-democenter/llama3-8b-instruct-lora_vhf-squad-v1 \
-    ./prep-democenter/llama3-8b-instruct-lora_vnemo-math-v1 \
-    ./prep-democenter/llama3-8b-instruct-lora_vnemo-squad-v1 \
+cp -R ./llama3-8b-instruct-lora_vhf-math-v1 \
+    ./llama3-8b-instruct-lora_vhf-squad-v1 \
+    ./llama3-8b-instruct-lora_vnemo-math-v1 \
+    ./llama3-8b-instruct-lora_vnemo-squad-v1 \
     $LOCAL_PEFT_DIRECTORY
 
 # Set permissions for LoRA adapters
