@@ -50,14 +50,7 @@ Use the following procedure to start all containers needed for this blueprint.
    source deploy/compose/.env
    ```
 
-4. Set the `NIM_MODEL_PROFILE` to be used for the LLM NIM model:
-
-   ```bash
-   export NIM_MODEL_PROFILE=5811750e70b7e9f340f4d670c72fcbd5282e254aeb31f62fd4f937cfb9361007
-   ```
-
-
-5. Start all required NIMs by running the following code.
+4. Start all required NIMs by running the following code.
 
    :::{warning}
    Do not attempt this step unless you have completed the previous steps.
@@ -74,7 +67,7 @@ Use the following procedure to start all containers needed for this blueprint.
    :::
 
 
-6. Check the status of the deployment by running the following code. Wait until all services are up and the `nemoretriever-ranking-ms`, `nemoretriever-embedding-ms` and `nim-llm-ms`  NIMs are in healthy state before proceeding further.
+5. Check the status of the deployment by running the following code. Wait until all services are up and the `nemoretriever-ranking-ms` and `nemoretriever-embedding-ms` NIMs are in healthy state before proceeding further.
 
      ```bash
      watch -n 2 'docker ps --format "table {{.Names}}\t{{.Status}}"'
@@ -90,18 +83,17 @@ Use the following procedure to start all containers needed for this blueprint.
         compose-graphic-elements-1              Up 14 minutes
         compose-table-structure-1               Up 14 minutes
         nemoretriever-embedding-ms              Up 14 minutes (healthy)
-        nim-llm-ms                              Up 14 minutes (healthy)
      ```
 
 
-7. Start the vector db containers from the repo root.
+6. Start the vector db containers from the repo root.
 
    ```bash
    docker compose -f deploy/compose/vectordb.yaml up -d
    ```
 
 
-8. Start the ingestion containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
+7. Start the ingestion containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
 
    ```bash
    docker compose -f deploy/compose/docker-compose-ingestor-server.yaml up -d
@@ -154,7 +146,7 @@ Use the following procedure to start all containers needed for this blueprint.
     ```
 
 
-9. Start the RAG containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
+8. Start the RAG containers from the repo root. This pulls the prebuilt containers from NGC and deploys them on your system.
 
     ```bash
     docker compose -f deploy/compose/docker-compose-rag-server.yaml up -d
@@ -198,7 +190,7 @@ Use the following procedure to start all containers needed for this blueprint.
     ```
 
 
-10. Check the status of the deployment by running the following code.
+9. Check the status of the deployment by running the following code.
 
     ```bash
     docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}"
@@ -222,7 +214,6 @@ Use the following procedure to start all containers needed for this blueprint.
     compose-graphic-elements-1              Up 38 minutes
     compose-table-structure-1               Up 38 minutes
     nemoretriever-embedding-ms              Up 38 minutes (healthy)
-    nim-llm-ms                              Up 38 minutes (healthy)
     ```
 
 
@@ -231,8 +222,7 @@ Use the following procedure to start all containers needed for this blueprint.
 
 After the RAG Blueprint is deployed, you can use the RAG UI to start experimenting with it.
 
-1. Open a web browser and access the RAG UI. You can start experimenting by uploading docs and asking questions. For details, see [User Interface for NVIDIA RAG Blueprint](user-interface.md).
-
+1. Open a web browser and access the RAG UI at http://. You can start experimenting by uploading docs and asking questions.
 
 ## Shut down services
 
