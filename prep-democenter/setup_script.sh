@@ -96,6 +96,12 @@ cp -R ./llama3-8b-instruct-lora_vhf-math-v1 \
 # Set permissions for LoRA adapters
 chmod -R 777 $LOCAL_PEFT_DIRECTORY
 
+echo "Copying Workshop Guides..."
+cp -R ../workshop-democenter/lab1-deploying-nims.html \
+    ../workshop-democenter/lab2-running-nim-with-lora-adapter.html \
+    ../workshop-democenter/lab3-deploy-rag.html \
+    $LOCAL_PEFT_DIRECTORY
+
 # Step 10: Make environment variables persistent
 echo "Saving environment variables to ~/.bashrc..."
 
