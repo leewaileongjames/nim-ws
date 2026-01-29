@@ -78,12 +78,10 @@ curl -s -X 'POST' \
 
 ### Step 6: Copy the Tokenizer for Llama 3.1 8B Instruct
 
-Copy the tokenizer for the Llama 3.1 8B Instruct model.
+Set the tokenizer for the Llama 3.1 8B Instruct model.
 
 ```bash
 export HF_TOKENIZER=~/tokenizer
-mkdir -p $HF_TOKENIZER
-cp -ar ~/.cache/huggingface/hub $HF_TOKENIZER
 ```
 
 ### Step 7: Export Variables and Run Triton Server

@@ -419,10 +419,8 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 </div></code></pre>
 <h2 id="2-running-genai-perf-benchmark">2. Running GenAI-Perf Benchmark</h2>
 <h3 id="step-6-copy-the-tokenizer-for-llama-31-8b-instruct">Step 6: Copy the Tokenizer for Llama 3.1 8B Instruct</h3>
-<p>Copy the tokenizer for the Llama 3.1 8B Instruct model.</p>
+<p>Set the tokenizer for the Llama 3.1 8B Instruct model.</p>
 <pre class="hljs"><code><div><span class="hljs-built_in">export</span> HF_TOKENIZER=~/tokenizer
-mkdir -p <span class="hljs-variable">$HF_TOKENIZER</span>
-cp -ar ~/.cache/huggingface/hub <span class="hljs-variable">$HF_TOKENIZER</span>
 </div></code></pre>
 <h3 id="step-7-export-variables-and-run-triton-server">Step 7: Export Variables and Run Triton Server</h3>
 <p>Set the environment variables and run the Triton Server.</p>
