@@ -7,7 +7,7 @@ export HF_TOKEN=<your_huggingface_api_token>
 
 Run the script:
 ```
-sudo -E setup_script.sh
+sudo -E bash ./setup_script.sh
 ```
 
 This will execute all the steps in sequence, ensuring the setup process is fully automated with a one-click execution.

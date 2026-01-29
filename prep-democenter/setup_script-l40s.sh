@@ -48,7 +48,7 @@ docker run --rm --runtime=nvidia --gpus=all \
 	list-model-profiles
 
 # Download normal NIM model cache profile
-MODEL_PROFILE="8835c31752fbc67ef658b20a9f78e056914fdef0660206d82f252d62fd96064d"
+MODEL_PROFILE="09e2f8e68f78ce94bf79d15b40a21333cea5d09dbe01ede63f6c957f4fcfab7b"
 echo "Downloading NIM model cache for profile $MODEL_PROFILE..."
 docker run -it --rm --gpus all \
 	-e NGC_API_KEY \
@@ -57,7 +57,7 @@ docker run -it --rm --gpus all \
     download-to-cache -p $MODEL_PROFILE
 
 # Download LoRA model cache
-LORA_PROFILE="8d3824f766182a754159e88ad5a0bd465b1b4cf69ecf80bd6d6833753e945740"
+LORA_PROFILE="388140213ee9615e643bda09d85082a21f51622c07bde3d0811d7c6998873a0b"
 echo "Downloading LoRA model cache for profile $LORA_PROFILE..."
 docker run -it --rm --gpus all \
 	-e NGC_API_KEY \
