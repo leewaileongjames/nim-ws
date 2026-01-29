@@ -101,6 +101,9 @@ cp -R ../workshop-democenter/lab1-deploying-nims.html \
     ../workshop-democenter/lab2-running-nim-with-lora-adapter.html \
     ../workshop-democenter/lab3-deploy-rag.html \
     ~/Desktop
+    
+chmod -R 777 ~/Desktop
+
 
 # Step 10: Make environment variables persistent
 echo "Saving environment variables to ~/.bashrc..."
