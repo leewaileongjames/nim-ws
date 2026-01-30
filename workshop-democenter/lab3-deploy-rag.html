@@ -392,6 +392,13 @@ code {
 <p>Ensure you meet <a href="./support-matrix.md">the hardware requirements</a>.</p>
 </li>
 </ol>
+<h2 id="stop-all-running-containers">Stop All Running Containers</h2>
+<p>Before starting this lab, it’s best to stop any previously running containers to avoid port conflicts or GPU contention.</p>
+<pre class="hljs"><code><div>docker stop $(docker ps -q)
+</div></code></pre>
+<p>This command stops all running Docker containers.
+If no containers are running, you’ll see a harmless error message.</p>
+<hr>
 <h2 id="start-services-using-self-hosted-on-premises-models">Start services using self-hosted on-premises models</h2>
 <p>Use the following procedure to start all containers needed for this blueprint.</p>
 <ol>

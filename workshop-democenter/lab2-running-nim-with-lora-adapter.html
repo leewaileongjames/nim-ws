@@ -446,7 +446,21 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 </div></code></pre>
 <p>This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.</p>
 <hr>
-<h2 id="step-6-query-a-lora-enhanced-model">Step 6: Query a LoRA-Enhanced Model</h2>
+<h2 id="step-6-query-a-normal-nim-without-lora">Step 6: Query a normal NIM (without LoRA)</h2>
+<p>You can now send a test prompt to the model.
+Before we leverage on a math reasoning LoRA adapter, lets test out the normal model with a math question (LLMs are really bad at math):</p>
+<pre class="hljs"><code><div>curl -X <span class="hljs-string">'POST'</span> \
+  <span class="hljs-string">'http://0.0.0.0:8000/v1/completions'</span> \
+  -H <span class="hljs-string">'accept: application/json'</span> \
+  -H <span class="hljs-string">'Content-Type: application/json'</span> \
+  -d <span class="hljs-string">'{
+    "model": "meta/llama3-8b-instruct",
+    "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
+    "max_tokens": 128
+  }'</span> | jq
+</div></code></pre>
+<hr>
+<h2 id="step-7-query-a-lora-enhanced-model">Step 7: Query a LoRA-Enhanced Model</h2>
 <p>You can now send a test prompt to the model.
 This example uses a math reasoning LoRA adapter (<code>lora_vhf-math-v1</code>):</p>
 <pre class="hljs"><code><div>curl -X <span class="hljs-string">'POST'</span> \
