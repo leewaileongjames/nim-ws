@@ -222,6 +222,26 @@ After the RAG Blueprint is deployed, you can use the RAG UI to start experimenti
 
 1. Open a web browser and access the RAG UI at [http://localhost:8090](http://localhost:8090) . You can start experimenting by uploading docs and asking questions.
 
+    ![rag-ui](./democenter-images/lab3-ui.png)
+
+2. Click on `New Collection` at the bottom left to create a collection and upload files. We have included a `Dell Pro Max infographic pdf` located within the `~/Desktop`, you can use that as a sample (or upload any other pdf / txt file if you'd prefer).
+
+    ![rag-ui-create-collection](./democenter-images/lab3-ui-create-collection.png)
+
+3. Wait for the ingestion to be complete, the time taken to ingest depends on how much information is in your uploaded files:
+
+    ![rag-ui-ingestion](./democenter-images/lab3-ui-ingest-success.png)
+
+4. Begin asking questions related to the files you have ingested. Lets try asking a question without activating RAG:
+
+    ![rag-ui-norag-query](./democenter-images/lab3-ui-no-rag.png)
+
+5. Finally, lets try selecting the collection and asking the same question:
+
+    ![rag-ui-rag-query](./democenter-images/lab3-ui-rag.png)
+
+6. Congratulations! 🎉 You have successfully deployed entire solution architectures efficiently and easily with NVIDIA AI Blueprints 🎉.
+
 ## Shut down services
 
 1. To stop all running services, run the following code.
