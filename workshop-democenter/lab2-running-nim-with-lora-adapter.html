@@ -445,14 +445,14 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 </div></code></pre>
 <p><img src="./democenter-images/lab1-nvidia-smi.png" alt="nvidia-smi-output"></p>
 <p>Once launched, the container will begin serving the NIM API.</p>
-<p>Press CTRL + C to go back and proceed to step 5.</p>
+<p>Press <code>CTRL + C</code> to go back and proceed to step 5.</p>
 <hr>
 <h2 id="step-5-list-available-lora-adapters">Step 5: List Available LoRA Adapters</h2>
 <p>Check which LoRA adapters are available and ready for inference.</p>
 <p>This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.</p>
 <pre class="hljs"><code><div>curl -X GET <span class="hljs-string">'http://0.0.0.0:8000/v1/models'</span> | jq
 </div></code></pre>
-<p><img src="./democenter-images/lab2-lora-endpoint.png" alt="nvidia-smi-output"></p>
+<p><img src="./democenter-images/lab2-lora-endpoint.png" alt="lora-endpoint"></p>
 <p>You will see a response list of models and the lora adapters loaded. Over here we see the <code>llama3-8b-instruct-lora_vnemo-squad-v1</code> adapter which has <code>meta/llama3-8b-instruct</code> as its root model. There is also the default model without adapters on it.</p>
 <hr>
 <h2 id="step-6-query-a-normal-nim-without-lora">Step 6: Query a normal NIM (without LoRA)</h2>
@@ -465,12 +465,14 @@ Before we leverage on a math reasoning LoRA adapter, lets test out the normal mo
   -d <span class="hljs-string">'{
     "model": "meta/llama3-8b-instruct",
     "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
-    "max_tokens": 128
+    "max_tokens": 256
   }'</span> | jq
 </div></code></pre>
+<p><img src="./democenter-images/lab2-nim-query.png" alt="nim-query"></p>
+<h3 id="as-you-can-see-the-output-becomes-gibberish-and-confuses-us-more-than-actually-giving-us-the-exact-answer">As you can see, the output becomes gibberish and confuses us more than actually giving us the exact answer.</h3>
 <hr>
 <h2 id="step-7-query-a-lora-enhanced-model">Step 7: Query a LoRA-Enhanced Model</h2>
-<p>You can now send a test prompt to the model.
+<p>Now lets send a test prompt to the model that uses the fine-tuned math LoRA adapter.
 This example uses a math reasoning LoRA adapter (<code>lora_vhf-math-v1</code>):</p>
 <pre class="hljs"><code><div>curl -X <span class="hljs-string">'POST'</span> \
   <span class="hljs-string">'http://0.0.0.0:8000/v1/completions'</span> \
@@ -479,9 +481,11 @@ This example uses a math reasoning LoRA adapter (<code>lora_vhf-math-v1</code>):
   -d <span class="hljs-string">'{
     "model": "llama3-8b-instruct-lora_vhf-math-v1",
     "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
-    "max_tokens": 128
+    "max_tokens": 256
   }'</span> | jq
 </div></code></pre>
+<p><img src="./democenter-images/lab2-lora-query.png" alt="nim-lora-query"></p>
+<h3 id="now-with-the-fine-tuned-lora-adapter-loaded-and-queried-we-can-see-a-better-response-that-gives-us-exactly-the-answer-that-we-want">Now with the fine-tuned LoRA adapter loaded and queried, we can see a better response that gives us exactly the answer that we want.</h3>
 <hr>
 <h2 id="%E2%9C%85-summary">✅ Summary</h2>
 <p>In this lab, you have successfully:</p>
@@ -492,7 +496,6 @@ This example uses a math reasoning LoRA adapter (<code>lora_vhf-math-v1</code>):
 <li>Queried and tested a LoRA-enhanced model through the REST API.</li>
 </ul>
 <hr>
-<p>Would you like me to format this as a <strong>PDF lab guide</strong> (with headings, code blocks, and notes for printing/distribution)?</p>
 
 </body>
 </html>

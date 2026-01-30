@@ -56,7 +56,7 @@ watch nvidia-smi
 ```
 ![nvidia-smi-output](./democenter-images/lab1-nvidia-smi.png)
 
-Press CTRL + C to go back and proceed to step 4.
+Press `CTRL + C` to go back and proceed to step 4.
 
 ### Step 4: Test the Model Endpoint
 

@@ -107,7 +107,7 @@ watch nvidia-smi
 
 Once launched, the container will begin serving the NIM API. 
 
-Press CTRL + C to go back and proceed to step 5.
+Press `CTRL + C` to go back and proceed to step 5.
 
 
 ---
@@ -122,7 +122,7 @@ This command queries the NIM REST API to retrieve all models and adapters curren
 ```bash
 curl -X GET 'http://0.0.0.0:8000/v1/models' | jq
 ```
-![nvidia-smi-output](./democenter-images/lab2-lora-endpoint.png)
+![lora-endpoint](./democenter-images/lab2-lora-endpoint.png)
 
 You will see a response list of models and the lora adapters loaded. Over here we see the `llama3-8b-instruct-lora_vnemo-squad-v1` adapter which has `meta/llama3-8b-instruct` as its root model. There is also the default model without adapters on it.
 
@@ -141,14 +141,18 @@ curl -X 'POST' \
   -d '{
     "model": "meta/llama3-8b-instruct",
     "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
-    "max_tokens": 128
+    "max_tokens": 256
   }' | jq
 ```
+![nim-query](./democenter-images/lab2-nim-query.png)
+
+### As you can see, the output becomes gibberish and confuses us more than actually giving us the exact answer.
+
 ---
 
 ## Step 7: Query a LoRA-Enhanced Model
 
-You can now send a test prompt to the model.
+Now lets send a test prompt to the model that uses the fine-tuned math LoRA adapter.
 This example uses a math reasoning LoRA adapter (`lora_vhf-math-v1`):
 
 ```bash
@@ -159,9 +163,13 @@ curl -X 'POST' \
   -d '{
     "model": "llama3-8b-instruct-lora_vhf-math-v1",
     "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
-    "max_tokens": 128
+    "max_tokens": 256
   }' | jq
 ```
+![nim-lora-query](./democenter-images/lab2-lora-query.png)
+
+### Now with the fine-tuned LoRA adapter loaded and queried, we can see a better response that gives us exactly the answer that we want.
+
 ---
 
 ## ✅ Summary
@@ -174,5 +182,3 @@ In this lab, you have successfully:
 * Queried and tested a LoRA-enhanced model through the REST API.
 
 ---
-
-Would you like me to format this as a **PDF lab guide** (with headings, code blocks, and notes for printing/distribution)?
