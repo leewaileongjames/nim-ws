@@ -5,25 +5,11 @@ In this walkthrough you deploy the NVIDIA RAG Blueprint with Docker Compose for 
 
 ## Prerequisites
 
-1. [Get an API Key](api-key.md).
+To pull images required by the blueprint from NGC, you must first authenticate Docker with nvcr.io. Use the NGC API Key you created in the first step.
 
-2. Install Docker Engine. For more information, see [Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
-
-3. Install Docker Compose. For more information, see [install the Compose plugin](https://docs.docker.com/compose/install/linux/).
-
-   a. Ensure the Docker Compose plugin version is 2.29.1 or later.
-
-   b. After you get the Docker Compose plugin installed, run `docker compose version` to confirm.
-
-4. To pull images required by the blueprint from NGC, you must first authenticate Docker with nvcr.io. Use the NGC API Key you created in the first step.
-
-   ```bash
-   echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
-   ```
-
-5. Containers that are enabled with GPU acceleration, such as Milvus and NVIDIA NIMS, deployed on-prem. To configure Docker for GPU-accelerated containers, install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
-
-6. Ensure you meet [the hardware requirements](./support-matrix.md).
+```bash
+echo "${NGC_API_KEY}" | docker login nvcr.io -u '$oauthtoken' --password-stdin
+```
 
 ## Stop All Running Containers
 

@@ -368,30 +368,9 @@ code {
 <h1 id="lab-03---get-started-with-the-nvidia-blueprints---enterprise-rag-blueprint">Lab 03 - Get Started With the NVIDIA Blueprints - Enterprise RAG Blueprint</h1>
 <p>In this walkthrough you deploy the NVIDIA RAG Blueprint with Docker Compose for a single node deployment, and using self-hosted on-premises models.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>
-<p><a href="api-key.md">Get an API Key</a>.</p>
-</li>
-<li>
-<p>Install Docker Engine. For more information, see <a href="https://docs.docker.com/engine/install/ubuntu/">Ubuntu</a>.</p>
-</li>
-<li>
-<p>Install Docker Compose. For more information, see <a href="https://docs.docker.com/compose/install/linux/">install the Compose plugin</a>.</p>
-<p>a. Ensure the Docker Compose plugin version is 2.29.1 or later.</p>
-<p>b. After you get the Docker Compose plugin installed, run <code>docker compose version</code> to confirm.</p>
-</li>
-<li>
 <p>To pull images required by the blueprint from NGC, you must first authenticate Docker with nvcr.io. Use the NGC API Key you created in the first step.</p>
 <pre class="hljs"><code><div><span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">${NGC_API_KEY}</span>"</span> | docker login nvcr.io -u <span class="hljs-string">'$oauthtoken'</span> --password-stdin
 </div></code></pre>
-</li>
-<li>
-<p>Containers that are enabled with GPU acceleration, such as Milvus and NVIDIA NIMS, deployed on-prem. To configure Docker for GPU-accelerated containers, install the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit</a>.</p>
-</li>
-<li>
-<p>Ensure you meet <a href="./support-matrix.md">the hardware requirements</a>.</p>
-</li>
-</ol>
 <h2 id="stop-all-running-containers">Stop All Running Containers</h2>
 <p>Before starting this lab, it’s best to stop any previously running containers to avoid port conflicts or GPU contention.</p>
 <pre class="hljs"><code><div>docker stop $(docker ps -q)
