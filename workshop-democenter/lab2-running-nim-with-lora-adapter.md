@@ -38,6 +38,9 @@ export LOCAL_PEFT_DIRECTORY=~/nim/loras
 mkdir -p $LOCAL_PEFT_DIRECTORY
 ls $LOCAL_PEFT_DIRECTORY
 ```
+![lora-adapters](./democenter-images/lab2-lora-adapters.png)
+
+You will see 4 LoRA adapters, we will be loading these adapters onto our NIM later.
 
 **Explanation:**
 
@@ -96,7 +99,16 @@ docker run -itd --rm --name=$CONTAINER_NAME \
 * `-e` sets environment variables for NIM configuration.
 * `-p 8000:8000` exposes the inference API on port 8000.
 
-Once launched, the container will begin serving the NIM API.
+It will take a while for the model to be deployed (around 1~5 mins). Run the following command to continuously check for GPU utilization, and you should see something like the following:
+```bash
+watch nvidia-smi
+```
+![nvidia-smi-output](./democenter-images/lab1-nvidia-smi.png)
+
+Once launched, the container will begin serving the NIM API. 
+
+Press CTRL + C to go back and proceed to step 5.
+
 
 ---
 
@@ -104,11 +116,15 @@ Once launched, the container will begin serving the NIM API.
 
 Check which LoRA adapters are available and ready for inference.
 
+This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.
+
+
 ```bash
 curl -X GET 'http://0.0.0.0:8000/v1/models' | jq
 ```
+![nvidia-smi-output](./democenter-images/lab2-lora-endpoint.png)
 
-This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.
+You will see a response list of models and the lora adapters loaded. Over here we see the `llama3-8b-instruct-lora_vnemo-squad-v1` adapter which has `meta/llama3-8b-instruct` as its root model. There is also the default model without adapters on it.
 
 ---
 

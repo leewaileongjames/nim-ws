@@ -405,6 +405,7 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 <pre class="hljs"><code><div>watch nvidia-smi
 </div></code></pre>
 <p><img src="./democenter-images/lab1-nvidia-smi.png" alt="nvidia-smi-output"></p>
+<p>Press CTRL + C to go back and proceed to step 4.</p>
 <h3 id="step-4-test-the-model-endpoint">Step 4: Test the Model Endpoint</h3>
 <p>To verify that the model server is running, send a <code>GET</code> request to list the available models.</p>
 <pre class="hljs"><code><div>curl -s -X GET <span class="hljs-string">'http://0.0.0.0:8000/v1/models'</span> | jq

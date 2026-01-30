@@ -391,6 +391,8 @@ If no containers are running, you’ll see a harmless error message.</p>
 mkdir -p <span class="hljs-variable">$LOCAL_PEFT_DIRECTORY</span>
 ls <span class="hljs-variable">$LOCAL_PEFT_DIRECTORY</span>
 </div></code></pre>
+<p><img src="./democenter-images/lab2-lora-adapters.png" alt="lora-adapters"></p>
+<p>You will see 4 LoRA adapters, we will be loading these adapters onto our NIM later.</p>
 <p><strong>Explanation:</strong></p>
 <ul>
 <li><code>LOCAL_PEFT_DIRECTORY</code> points to where your LoRA weights/adapters will be stored.</li>
@@ -438,13 +440,20 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 <li><code>-e</code> sets environment variables for NIM configuration.</li>
 <li><code>-p 8000:8000</code> exposes the inference API on port 8000.</li>
 </ul>
+<p>It will take a while for the model to be deployed (around 1~5 mins). Run the following command to continuously check for GPU utilization, and you should see something like the following:</p>
+<pre class="hljs"><code><div>watch nvidia-smi
+</div></code></pre>
+<p><img src="./democenter-images/lab1-nvidia-smi.png" alt="nvidia-smi-output"></p>
 <p>Once launched, the container will begin serving the NIM API.</p>
+<p>Press CTRL + C to go back and proceed to step 5.</p>
 <hr>
 <h2 id="step-5-list-available-lora-adapters">Step 5: List Available LoRA Adapters</h2>
 <p>Check which LoRA adapters are available and ready for inference.</p>
+<p>This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.</p>
 <pre class="hljs"><code><div>curl -X GET <span class="hljs-string">'http://0.0.0.0:8000/v1/models'</span> | jq
 </div></code></pre>
-<p>This command queries the NIM REST API to retrieve all models and adapters currently loaded in memory.</p>
+<p><img src="./democenter-images/lab2-lora-endpoint.png" alt="nvidia-smi-output"></p>
+<p>You will see a response list of models and the lora adapters loaded. Over here we see the <code>llama3-8b-instruct-lora_vnemo-squad-v1</code> adapter which has <code>meta/llama3-8b-instruct</code> as its root model. There is also the default model without adapters on it.</p>
 <hr>
 <h2 id="step-6-query-a-normal-nim-without-lora">Step 6: Query a normal NIM (without LoRA)</h2>
 <p>You can now send a test prompt to the model.

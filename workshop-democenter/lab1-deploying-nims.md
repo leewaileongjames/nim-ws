@@ -56,6 +56,8 @@ watch nvidia-smi
 ```
 ![nvidia-smi-output](./democenter-images/lab1-nvidia-smi.png)
 
+Press CTRL + C to go back and proceed to step 4.
+
 ### Step 4: Test the Model Endpoint
 
 To verify that the model server is running, send a `GET` request to list the available models.
