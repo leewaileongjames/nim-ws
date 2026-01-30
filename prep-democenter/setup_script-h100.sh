@@ -14,6 +14,7 @@ fi
 
 # Step 1: Clean the current lab environment
 echo "Cleaning current lab environment..."
+docker stop $(docker ps -q)
 docker system prune -a -f
 docker volume prune -a -f
 sudo rm -rf ~/app_char_rag.py ~/nvidia-workbench/* ~/Downloads/* ~/Desktop/* /usr/share/ollama/.ollama/models
