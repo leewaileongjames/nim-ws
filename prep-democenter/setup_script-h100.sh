@@ -94,10 +94,10 @@ cp -R ./llama3-8b-instruct-lora_vhf-math-v1 \
     $LOCAL_PEFT_DIRECTORY
 
 # Set permissions for LoRA adapters
-chmod -R 777 $LOCAL_PEFT_DIRECTORY
+sudo chmod -R 777 $LOCAL_PEFT_DIRECTORY
 
 echo "Copying Workshop Guides..."
-chmod -R 777 ../workshop-democenter/*
+sudo chmod -R 777 ../workshop-democenter/*
 cp -R ../workshop-democenter/lab1-deploying-nims.html \
     ../workshop-democenter/lab2-running-nim-with-lora-adapter.html \
     ../workshop-democenter/lab3-deploy-rag.html \
