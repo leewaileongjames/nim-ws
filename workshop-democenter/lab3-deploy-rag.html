@@ -536,7 +536,29 @@ nemoretriever-embedding-ms              Up 38 minutes (healthy)
 <h2 id="experiment-with-the-web-user-interface">Experiment with the Web User Interface</h2>
 <p>After the RAG Blueprint is deployed, you can use the RAG UI to start experimenting with it.</p>
 <ol>
-<li>Open a web browser and access the RAG UI at http://. You can start experimenting by uploading docs and asking questions.</li>
+<li>
+<p>Open a web browser and access the RAG UI at <a href="http://localhost:8090">http://localhost:8090</a> . You can start experimenting by uploading docs and asking questions.</p>
+<p><img src="./democenter-images/lab3-ui.png" alt="rag-ui"></p>
+</li>
+<li>
+<p>Click on <code>New Collection</code> at the bottom left to create a collection and upload files. We have included a <code>Dell Pro Max infographic pdf</code> located within the <code>~/Desktop</code>, you can use that as a sample (or upload any other pdf / txt file if you'd prefer).</p>
+<p><img src="./democenter-images/lab3-ui-create-collection.png" alt="rag-ui-create-collection"></p>
+</li>
+<li>
+<p>Wait for the ingestion to be complete, the time taken to ingest depends on how much information is in your uploaded files:</p>
+<p><img src="./democenter-images/lab3-ui-ingest-success.png" alt="rag-ui-ingestion"></p>
+</li>
+<li>
+<p>Begin asking questions related to the files you have ingested. Lets try asking a question without activating RAG:</p>
+<p><img src="./democenter-images/lab3-ui-no-rag.png" alt="rag-ui-norag-query"></p>
+</li>
+<li>
+<p>Finally, lets try selecting the collection and asking the same question:</p>
+<p><img src="./democenter-images/lab3-ui-rag.png" alt="rag-ui-rag-query"></p>
+</li>
+<li>
+<p>Congratulations! 🎉 You have successfully deployed entire solution architectures efficiently and easily with NVIDIA AI Blueprints 🎉.</p>
+</li>
 </ol>
 <h2 id="shut-down-services">Shut down services</h2>
 <ol>
