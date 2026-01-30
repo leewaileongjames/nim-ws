@@ -50,6 +50,12 @@ docker run -itd --name=llama3-8b-instruct --rm \
     nvcr.io/nim/meta/llama3-8b-instruct:latest
 ```
 
+It will take a while for the model to be deployed (around 1~5 mins). Run the following command to continuously check for GPU utilization, and you should see something like the following:
+```bash
+watch nvidia-smi
+```
+![nvidia-smi-output](./democenter-images/lab1-nvidia-smi.png)
+
 ### Step 4: Test the Model Endpoint
 
 To verify that the model server is running, send a `GET` request to list the available models.
@@ -57,6 +63,8 @@ To verify that the model server is running, send a `GET` request to list the ava
 ```bash
 curl -s -X GET 'http://0.0.0.0:8000/v1/models' | jq
 ```
+![model-endpoint](./democenter-images/lab1-model-endpoint.png)
+
 
 ### Step 5: Test Model Response
 
@@ -73,6 +81,8 @@ curl -s -X 'POST' \
     "max_tokens": 64
 }' | jq
 ```
+You should see the following response, the LLM response is under the `content` field:
+![model-query](./democenter-images/lab1-model-query.png)
 
 ## 2. Running GenAI-Perf Benchmark
 
@@ -128,13 +138,23 @@ genai-perf \
     -v \
     --max-threads=256
 ```
+The benchmark can take up to few minutes, in which once done you will see the following reference benchmark output:
+
+![genaiperf-output](./democenter-images/lab1-genaiperf-output.png)
 
 ---
 
-## Notes:
+### Step 9: Exit out of container
 
-* Ensure that your Docker installation supports GPU and that NVIDIA drivers and CUDA are properly installed on your machine.
-* The model server and benchmark tool assume that the necessary ports are open (in this case, `8000` for HTTP).
-* Modify the environment variables and paths as needed for your specific setup.
+Exit out of the current trition container:
+
+```bash
+exit
+```
+
+## 📝 Summary
+
+Congratulations! 🎉 You successfully launched the Llama 3 8B Instruct model on NIM, tested it with sample queries, set up Triton Server, and ran a GenAI‑Perf benchmark to measure performance
+
 
 ---
