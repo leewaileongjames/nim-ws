@@ -16,7 +16,7 @@ fi
 echo "Cleaning current lab environment..."
 docker system prune -a -f
 docker volume prune -a -f
-sudo rm -rf ~/app_char_rag.py ~/nvidia-workbench/* ~/Downloads/*
+sudo rm -rf ~/app_char_rag.py ~/nvidia-workbench/* ~/Downloads/* ~/Desktop/* /usr/share/ollama/.ollama/models
 
 # Step 2: Login to Docker NGC
 echo "Logging into Docker NGC..."
