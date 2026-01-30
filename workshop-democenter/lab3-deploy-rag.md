@@ -25,6 +25,18 @@ In this walkthrough you deploy the NVIDIA RAG Blueprint with Docker Compose for 
 
 6. Ensure you meet [the hardware requirements](./support-matrix.md).
 
+## Stop All Running Containers
+
+Before starting this lab, it’s best to stop any previously running containers to avoid port conflicts or GPU contention.
+
+```bash
+docker stop $(docker ps -q)
+```
+
+This command stops all running Docker containers.
+If no containers are running, you’ll see a harmless error message.
+
+---
 
 ## Start services using self-hosted on-premises models
 

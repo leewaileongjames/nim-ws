@@ -112,7 +112,25 @@ This command queries the NIM REST API to retrieve all models and adapters curren
 
 ---
 
-## Step 6: Query a LoRA-Enhanced Model
+## Step 6: Query a normal NIM (without LoRA)
+
+You can now send a test prompt to the model.
+Before we leverage on a math reasoning LoRA adapter, lets test out the normal model with a math question (LLMs are really bad at math):
+
+```bash
+curl -X 'POST' \
+  'http://0.0.0.0:8000/v1/completions' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "meta/llama3-8b-instruct",
+    "prompt": "John buys 10 packs of magic cards. Each pack has 20 cards and 1/4 of those cards are uncommon. How many uncommon cards did he get?",
+    "max_tokens": 128
+  }' | jq
+```
+---
+
+## Step 7: Query a LoRA-Enhanced Model
 
 You can now send a test prompt to the model.
 This example uses a math reasoning LoRA adapter (`lora_vhf-math-v1`):
