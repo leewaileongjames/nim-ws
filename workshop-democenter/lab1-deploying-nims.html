@@ -387,7 +387,7 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
 <p>You can list the available model profiles for the desired model using the following command.</p>
 <pre class="hljs"><code><div>docker run --rm --runtime=nvidia --gpus=all \
     -e NGC_API_KEY=<span class="hljs-variable">$NGC_API_KEY</span> \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest \
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3 \
     list-model-profiles
 </div></code></pre>
 <h3 id="step-3-start-the-model-server">Step 3: Start the Model Server</h3>
@@ -399,7 +399,7 @@ mkdir -p <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE
     -v <span class="hljs-string">"<span class="hljs-variable">$LOCAL_NIM_CACHE</span>:/opt/nim/.cache"</span> \
     -u $(id -u) \
     -p 8000:8000 \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3
 </div></code></pre>
 <p>It will take a while for the model to be deployed (around 1~5 mins). Run the following command to continuously check for GPU utilization, and you should see something like the following:</p>
 <pre class="hljs"><code><div>watch nvidia-smi
