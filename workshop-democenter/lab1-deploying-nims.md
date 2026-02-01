@@ -32,7 +32,7 @@ You can list the available model profiles for the desired model using the follow
 ```bash
 docker run --rm --runtime=nvidia --gpus=all \
     -e NGC_API_KEY=$NGC_API_KEY \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest \
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3 \
     list-model-profiles
 ```
 ### Step 3: Start the Model Server
@@ -47,7 +47,7 @@ docker run -itd --name=llama3-8b-instruct --rm \
     -v "$LOCAL_NIM_CACHE:/opt/nim/.cache" \
     -u $(id -u) \
     -p 8000:8000 \
-    nvcr.io/nim/meta/llama3-8b-instruct:latest
+    nvcr.io/nim/meta/llama3-8b-instruct:1.0.3
 ```
 
 It will take a while for the model to be deployed (around 1~5 mins). Run the following command to continuously check for GPU utilization, and you should see something like the following:
